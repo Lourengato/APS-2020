@@ -7,7 +7,7 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,9 +55,9 @@ public class TbProduto implements Serializable {
     @Column(name = "fg_ativo")
     private Boolean fgAtivo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbProduto")
-    private Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection;
+    private List<TbProdutoIngrediente> tbProdutoIngredienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbProduto")
-    private Collection<TbCompraProduto> tbCompraProdutoCollection;
+    private List<TbCompraProduto> tbCompraProdutoList;
 
     public TbProduto() {
     }
@@ -112,21 +112,21 @@ public class TbProduto implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TbProdutoIngrediente> getTbProdutoIngredienteCollection() {
-        return tbProdutoIngredienteCollection;
+    public List<TbProdutoIngrediente> getTbProdutoIngredienteList() {
+        return tbProdutoIngredienteList;
     }
 
-    public void setTbProdutoIngredienteCollection(Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection) {
-        this.tbProdutoIngredienteCollection = tbProdutoIngredienteCollection;
+    public void setTbProdutoIngredienteList(List<TbProdutoIngrediente> tbProdutoIngredienteList) {
+        this.tbProdutoIngredienteList = tbProdutoIngredienteList;
     }
 
     @XmlTransient
-    public Collection<TbCompraProduto> getTbCompraProdutoCollection() {
-        return tbCompraProdutoCollection;
+    public List<TbCompraProduto> getTbCompraProdutoList() {
+        return tbCompraProdutoList;
     }
 
-    public void setTbCompraProdutoCollection(Collection<TbCompraProduto> tbCompraProdutoCollection) {
-        this.tbCompraProdutoCollection = tbCompraProdutoCollection;
+    public void setTbCompraProdutoList(List<TbCompraProduto> tbCompraProdutoList) {
+        this.tbCompraProdutoList = tbCompraProdutoList;
     }
 
     @Override

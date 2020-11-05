@@ -7,8 +7,8 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,7 +65,7 @@ public class TbCompra implements Serializable {
     @ManyToOne(optional = false)
     private TbEndereco codEndereco;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbCompra")
-    private Collection<TbCompraProduto> tbCompraProdutoCollection;
+    private List<TbCompraProduto> tbCompraProdutoList;
 
     public TbCompra() {
     }
@@ -129,12 +129,12 @@ public class TbCompra implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TbCompraProduto> getTbCompraProdutoCollection() {
-        return tbCompraProdutoCollection;
+    public List<TbCompraProduto> getTbCompraProdutoList() {
+        return tbCompraProdutoList;
     }
 
-    public void setTbCompraProdutoCollection(Collection<TbCompraProduto> tbCompraProdutoCollection) {
-        this.tbCompraProdutoCollection = tbCompraProdutoCollection;
+    public void setTbCompraProdutoList(List<TbCompraProduto> tbCompraProdutoList) {
+        this.tbCompraProdutoList = tbCompraProdutoList;
     }
 
     @Override

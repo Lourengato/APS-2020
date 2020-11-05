@@ -7,7 +7,7 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,7 +60,7 @@ public class TbIngrediente implements Serializable {
     @ManyToOne(optional = false)
     private TbCategoriaIngrediente codCategoriaIngrediente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbIngrediente")
-    private Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection;
+    private List<TbProdutoIngrediente> tbProdutoIngredienteList;
 
     public TbIngrediente() {
     }
@@ -123,12 +123,12 @@ public class TbIngrediente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TbProdutoIngrediente> getTbProdutoIngredienteCollection() {
-        return tbProdutoIngredienteCollection;
+    public List<TbProdutoIngrediente> getTbProdutoIngredienteList() {
+        return tbProdutoIngredienteList;
     }
 
-    public void setTbProdutoIngredienteCollection(Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection) {
-        this.tbProdutoIngredienteCollection = tbProdutoIngredienteCollection;
+    public void setTbProdutoIngredienteList(List<TbProdutoIngrediente> tbProdutoIngredienteList) {
+        this.tbProdutoIngredienteList = tbProdutoIngredienteList;
     }
 
     @Override
