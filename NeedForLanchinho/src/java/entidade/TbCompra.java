@@ -88,12 +88,12 @@ public class TbCompra implements Serializable {
         this.codCompra = codCompra;
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public double getValorTotal() {
+        return valorTotal.doubleValue();
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = new BigDecimal(valorTotal);
     }
 
     public Date getDataCompra() {

@@ -87,12 +87,12 @@ public class TbProduto implements Serializable {
         this.nomeProduto = nomeProduto;
     }
 
-    public BigDecimal getPrecoProduto() {
-        return precoProduto;
+    public double getPrecoProduto() {
+        return precoProduto.doubleValue();
     }
 
-    public void setPrecoProduto(BigDecimal precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setPrecoProduto(double precoProduto) {
+        this.precoProduto = new BigDecimal(precoProduto);
     }
 
     public Boolean getListado() {

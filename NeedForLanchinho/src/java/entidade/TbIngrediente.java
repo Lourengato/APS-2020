@@ -90,12 +90,12 @@ public class TbIngrediente implements Serializable {
         this.nomeIngrediente = nomeIngrediente;
     }
 
-    public BigDecimal getPrecoIngrediente() {
-        return precoIngrediente;
+    public double getPrecoIngrediente() {
+        return precoIngrediente.doubleValue();
     }
 
-    public void setPrecoIngrediente(BigDecimal precoIngrediente) {
-        this.precoIngrediente = precoIngrediente;
+    public void setPrecoIngrediente(double precoIngrediente) {
+        this.precoIngrediente = new BigDecimal(precoIngrediente);
     }
 
     public String getUnidadeIngrediente() {
