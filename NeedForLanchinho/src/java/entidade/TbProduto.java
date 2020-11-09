@@ -7,6 +7,7 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -60,6 +61,7 @@ public class TbProduto implements Serializable {
     private List<TbCompraProduto> tbCompraProdutoList;
 
     public TbProduto() {
+        this.tbProdutoIngredienteList = new ArrayList<>();
     }
 
     public TbProduto(Integer codProduto) {
@@ -109,6 +111,29 @@ public class TbProduto implements Serializable {
 
     public void setFgAtivo(Boolean fgAtivo) {
         this.fgAtivo = fgAtivo;
+    }
+
+    public void addIngrediente(TbIngrediente ingrediente, Integer quantidade) {
+        TbProdutoIngrediente produtoIngrediente = new TbProdutoIngrediente();
+        produtoIngrediente.setTbProduto(this);
+        produtoIngrediente.setTbIngrediente(ingrediente);
+        produtoIngrediente.setQuantidadeIngrediente(quantidade);
+        
+        TbProdutoIngredientePK produtoIngredientePK = 
+                new TbProdutoIngredientePK(this.codProduto, ingrediente.getCodIngrediente());
+        produtoIngrediente.setTbProdutoIngredientePK(produtoIngredientePK);
+        
+        this.tbProdutoIngredienteList.add(produtoIngrediente);
+    }
+    
+    public void removeIngrediente(TbIngrediente ingrediente) {
+        for (int i = 0; i < this.tbProdutoIngredienteList.size(); i++) {
+            if (this.tbProdutoIngredienteList.get(i).getTbIngrediente().getCodIngrediente()
+                    == ingrediente.getCodIngrediente()) {
+                this.tbProdutoIngredienteList.remove(i);
+                return;
+            }
+        }
     }
 
     @XmlTransient
