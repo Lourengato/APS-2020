@@ -7,7 +7,8 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,11 +56,12 @@ public class TbProduto implements Serializable {
     @Column(name = "fg_ativo")
     private Boolean fgAtivo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbProduto")
-    private Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection;
+    private List<TbProdutoIngrediente> tbProdutoIngredienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbProduto")
-    private Collection<TbCompraProduto> tbCompraProdutoCollection;
+    private List<TbCompraProduto> tbCompraProdutoList;
 
     public TbProduto() {
+        this.tbProdutoIngredienteList = new ArrayList<>();
     }
 
     public TbProduto(Integer codProduto) {
@@ -87,12 +89,12 @@ public class TbProduto implements Serializable {
         this.nomeProduto = nomeProduto;
     }
 
-    public BigDecimal getPrecoProduto() {
-        return precoProduto;
+    public double getPrecoProduto() {
+        return precoProduto.doubleValue();
     }
 
-    public void setPrecoProduto(BigDecimal precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setPrecoProduto(double precoProduto) {
+        this.precoProduto = new BigDecimal(precoProduto);
     }
 
     public Boolean getListado() {
@@ -111,22 +113,45 @@ public class TbProduto implements Serializable {
         this.fgAtivo = fgAtivo;
     }
 
+    public void addIngrediente(TbIngrediente ingrediente, Integer quantidade) {
+        TbProdutoIngrediente produtoIngrediente = new TbProdutoIngrediente();
+        produtoIngrediente.setTbProduto(this);
+        produtoIngrediente.setTbIngrediente(ingrediente);
+        produtoIngrediente.setQuantidadeIngrediente(quantidade);
+        
+        TbProdutoIngredientePK produtoIngredientePK = 
+                new TbProdutoIngredientePK(this.codProduto, ingrediente.getCodIngrediente());
+        produtoIngrediente.setTbProdutoIngredientePK(produtoIngredientePK);
+        
+        this.tbProdutoIngredienteList.add(produtoIngrediente);
+    }
+    
+    public void removeIngrediente(TbIngrediente ingrediente) {
+        for (int i = 0; i < this.tbProdutoIngredienteList.size(); i++) {
+            if (this.tbProdutoIngredienteList.get(i).getTbIngrediente().getCodIngrediente()
+                    == ingrediente.getCodIngrediente()) {
+                this.tbProdutoIngredienteList.remove(i);
+                return;
+            }
+        }
+    }
+
     @XmlTransient
-    public Collection<TbProdutoIngrediente> getTbProdutoIngredienteCollection() {
-        return tbProdutoIngredienteCollection;
+    public List<TbProdutoIngrediente> getTbProdutoIngredienteList() {
+        return tbProdutoIngredienteList;
     }
 
-    public void setTbProdutoIngredienteCollection(Collection<TbProdutoIngrediente> tbProdutoIngredienteCollection) {
-        this.tbProdutoIngredienteCollection = tbProdutoIngredienteCollection;
+    public void setTbProdutoIngredienteList(List<TbProdutoIngrediente> tbProdutoIngredienteList) {
+        this.tbProdutoIngredienteList = tbProdutoIngredienteList;
     }
 
     @XmlTransient
-    public Collection<TbCompraProduto> getTbCompraProdutoCollection() {
-        return tbCompraProdutoCollection;
+    public List<TbCompraProduto> getTbCompraProdutoList() {
+        return tbCompraProdutoList;
     }
 
-    public void setTbCompraProdutoCollection(Collection<TbCompraProduto> tbCompraProdutoCollection) {
-        this.tbCompraProdutoCollection = tbCompraProdutoCollection;
+    public void setTbCompraProdutoList(List<TbCompraProduto> tbCompraProdutoList) {
+        this.tbCompraProdutoList = tbCompraProdutoList;
     }
 
     @Override

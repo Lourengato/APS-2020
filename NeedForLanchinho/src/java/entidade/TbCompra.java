@@ -7,8 +7,9 @@ package entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,9 +66,10 @@ public class TbCompra implements Serializable {
     @ManyToOne(optional = false)
     private TbEndereco codEndereco;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbCompra")
-    private Collection<TbCompraProduto> tbCompraProdutoCollection;
+    private List<TbCompraProduto> tbCompraProdutoList;
 
     public TbCompra() {
+        tbCompraProdutoList = new ArrayList<>();
     }
 
     public TbCompra(Integer codCompra) {
@@ -88,12 +90,12 @@ public class TbCompra implements Serializable {
         this.codCompra = codCompra;
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public double getValorTotal() {
+        return valorTotal.doubleValue();
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = new BigDecimal(valorTotal);
     }
 
     public Date getDataCompra() {
@@ -127,14 +129,37 @@ public class TbCompra implements Serializable {
     public void setCodEndereco(TbEndereco codEndereco) {
         this.codEndereco = codEndereco;
     }
-
-    @XmlTransient
-    public Collection<TbCompraProduto> getTbCompraProdutoCollection() {
-        return tbCompraProdutoCollection;
+    
+    public void addProduto(TbProduto produto, Integer quantidade) {
+        TbCompraProduto compraProduto = new TbCompraProduto();
+        compraProduto.setTbCompra(this);
+        compraProduto.setTbProduto(produto);
+        compraProduto.setQuantidadeProduto(quantidade);
+        
+        TbCompraProdutoPK compraProdutoPK = 
+                new TbCompraProdutoPK(this.codCompra, produto.getCodProduto());
+        compraProduto.setTbCompraProdutoPK(compraProdutoPK);
+        
+        this.tbCompraProdutoList.add(compraProduto);
+    }
+    
+    public void removeProduto(TbProduto produto) {
+        for (int i = 0; i < this.tbCompraProdutoList.size(); i++) {
+            if (this.tbCompraProdutoList.get(i).getTbProduto().getCodProduto()
+                    == produto.getCodProduto()) {
+                this.tbCompraProdutoList.remove(i);
+                return;
+            }
+        }
     }
 
-    public void setTbCompraProdutoCollection(Collection<TbCompraProduto> tbCompraProdutoCollection) {
-        this.tbCompraProdutoCollection = tbCompraProdutoCollection;
+    @XmlTransient
+    public List<TbCompraProduto> getTbCompraProdutoList() {
+        return tbCompraProdutoList;
+    }
+
+    public void setTbCompraProdutoList(List<TbCompraProduto> tbCompraProdutoList) {
+        this.tbCompraProdutoList = tbCompraProdutoList;
     }
 
     @Override

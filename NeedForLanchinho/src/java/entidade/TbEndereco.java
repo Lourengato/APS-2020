@@ -6,7 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -62,10 +62,10 @@ public class TbEndereco implements Serializable {
     private String numero;
     @Column(name = "complemento")
     private String complemento;
-    @ManyToMany(mappedBy = "tbEnderecoCollection")
-    private Collection<TbCliente> tbClienteCollection;
+    @ManyToMany(mappedBy = "tbEnderecoList")
+    private List<TbCliente> tbClienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codEndereco")
-    private Collection<TbCompra> tbCompraCollection;
+    private List<TbCompra> tbCompraList;
 
     public TbEndereco() {
     }
@@ -139,21 +139,21 @@ public class TbEndereco implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TbCliente> getTbClienteCollection() {
-        return tbClienteCollection;
+    public List<TbCliente> getTbClienteList() {
+        return tbClienteList;
     }
 
-    public void setTbClienteCollection(Collection<TbCliente> tbClienteCollection) {
-        this.tbClienteCollection = tbClienteCollection;
+    public void setTbClienteList(List<TbCliente> tbClienteList) {
+        this.tbClienteList = tbClienteList;
     }
 
     @XmlTransient
-    public Collection<TbCompra> getTbCompraCollection() {
-        return tbCompraCollection;
+    public List<TbCompra> getTbCompraList() {
+        return tbCompraList;
     }
 
-    public void setTbCompraCollection(Collection<TbCompra> tbCompraCollection) {
-        this.tbCompraCollection = tbCompraCollection;
+    public void setTbCompraList(List<TbCompra> tbCompraList) {
+        this.tbCompraList = tbCompraList;
     }
 
     @Override
