@@ -6,7 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,7 +44,7 @@ public class TbCategoriaIngrediente implements Serializable {
     @Column(name = "categoria_ingrediente")
     private String categoriaIngrediente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCategoriaIngrediente")
-    private Collection<TbIngrediente> tbIngredienteCollection;
+    private List<TbIngrediente> tbIngredienteList;
 
     public TbCategoriaIngrediente() {
     }
@@ -75,12 +75,12 @@ public class TbCategoriaIngrediente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TbIngrediente> getTbIngredienteCollection() {
-        return tbIngredienteCollection;
+    public List<TbIngrediente> getTbIngredienteList() {
+        return tbIngredienteList;
     }
 
-    public void setTbIngredienteCollection(Collection<TbIngrediente> tbIngredienteCollection) {
-        this.tbIngredienteCollection = tbIngredienteCollection;
+    public void setTbIngredienteList(List<TbIngrediente> tbIngredienteList) {
+        this.tbIngredienteList = tbIngredienteList;
     }
 
     @Override
