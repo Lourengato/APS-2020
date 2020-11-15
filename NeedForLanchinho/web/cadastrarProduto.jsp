@@ -32,6 +32,8 @@
                         <input type="text" id="quantidade" name="quantidade" class="margin-bottom input">
                         <label for="password">Preço:</label>
                         <input type="text" id="price" name="price" class="margin-bottom input">
+                        <label for="password">Categoria:</label>
+                        <input type="text" id="category" name="category" class="margin-bottom input">
                         <input type="submit" value="Cadastrar" class="submit-btn">
                     </form>
                 </div>
