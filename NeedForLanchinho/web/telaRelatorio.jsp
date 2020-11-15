@@ -15,15 +15,16 @@
         <title>Relatorio</title>
     </head>
     <body>
-        <body>
-            <p> </p>
-    
-            <table id="products" >
-                <th>
-                <td style="border: 1px solid black">
+        <div class="column margin-bottom">
+            <h2>Relatórios</h2>
+            <div class="decoration"> </div>
+        </div>
+            <table id="products" class=" full-width" >
+                <th class="full-width title">
+                <td>
                 Valor total 
                 </td>
-                <td style="border: 1px solid black">
+                <td>
                 Data pedido
                 </td>
                 </th>

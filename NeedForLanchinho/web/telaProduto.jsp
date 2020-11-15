@@ -47,7 +47,6 @@
         productsTable.classList.add('margin-bottom');
         container.classList.add('margin-bottom');
         document.getElementById('containerPedido').appendChild(container);
-        // document.body.appendChild(container);
         document.getElementById('container' + id).appendChild(productsTable);
         document.getElementById('container' + id).appendChild(btnDelete);
         btnDelete.classList.add('submit-btn');
@@ -57,6 +56,7 @@
         var name = row.insertCell(0);
         var price = row.insertCell(1);
         var quantidade = row.insertCell(2);
+        row.classList.add('title');
         name.innerHTML = 'Ingrediente:';
         price.innerHTML ='Preço:';
         quantidade.innerHTML = 'Quantidade:';
