@@ -4,6 +4,9 @@
     Author     : loure
 --%>
 
+<%@page import="entidade.TbCompra"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CompraDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,32 +18,33 @@
         <body>
             <p> </p>
     
-            <table id="products">
-            <tr>
-                <td>Nome:</td>
-                <td>Preço:</td>
-                <td>Quantidade:</td>
-            </tr>
+            <table id="products" >
+                <th>
+                <td style="border: 1px solid black">
+                Valor total 
+                </td>
+                <td style="border: 1px solid black">
+                Data pedido
+                </td>
+                </th>
+               <%
+                    CompraDao compra = new CompraDao();
+                    List<TbCompra> compras = compra.listarCompra();
+                    
+                    
+                    for( TbCompra c : compras){
+                        if(request.getAttribute("id") == c.getCodCompra()){
+                %>
+                    <td><% out.print(c.getValorTotal()); %></td>
+                <%} else {%>
+                    <tr>
+                        <td style="border: 1px solid black"><% out.print(c.getCodCompra()); %></td>
+                        <td style="border: 1px solid black"><% out.print(c.getValorTotal()); %></td>
+                        <td style="border: 1px solid black"><% out.print(c.getDataCompra());%></td>
+                    </tr>
+                <%}}%>
             </table>
             <br>
         </body>
     </body>
 </html>
-<script>
-    var produtos = [{nome: 'banana', price: '3,99', quantidade: 5}, {nome: 'banana', price: '3,99', quantidade: 5}, {nome: 'banana', price: '3,99', quantidade: 5}]
-
-    refresh()
-    
-    function refresh() {
-        for (var i = 0; i < produtos.length; i++) {
-            var table = document.getElementById("products");
-            var row = table.insertRow(i + 1);
-            var name = row.insertCell(0);
-            var price = row.insertCell(1);
-            var quantidade = row.insertCell(2);
-            name.innerHTML = produtos[i].nome;
-            price.innerHTML = produtos[i].price;
-            quantidade.innerHTML = produtos[i].quantidade;
-        }
-    }
-</script>
