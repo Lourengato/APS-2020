@@ -33,16 +33,13 @@
                     
                     
                     for( TbCompra c : compras){
-                        if(request.getAttribute("id") == c.getCodCompra()){
                 %>
-                    <td><% out.print(c.getValorTotal()); %></td>
-                <%} else {%>
                     <tr>
-                        <td style="border: 1px solid black"><% out.print(c.getCodCompra()); %></td>
-                        <td style="border: 1px solid black"><% out.print(c.getValorTotal()); %></td>
-                        <td style="border: 1px solid black"><% out.print(c.getDataCompra());%></td>
+                        <td><% out.print(c.getCodCompra()); %></td>
+                        <td><% out.print(c.getValorTotal()); %></td>
+                        <td><% out.print(c.getDataCompra());%></td>
                     </tr>
-                <%}}%>
+                <%}%>
             </table>
             <br>
         </body>

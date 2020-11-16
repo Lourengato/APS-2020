@@ -13,16 +13,29 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="menuGrid">
-            <img src="undraw_on_the_way_ldaq.svg" class="image">
-            <div class="formDiv">
-                <form action="/action_page.php" class="form">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email">
-                    <label for="password">Senha:</label>
-                    <input type="text" id="password" name="password">
-                    <input type="submit" value="Submit">
-                </form>
+        <div class="justify-center column align-center full-height">
+            <div class="justify-center row">
+                <div style="height: min-content;" class="margin-right-md">
+                    <img src="undraw_on_the_way_ldaq.svg" class="image">
+                </div>
+
+                <div class="container column align-center">
+                    <div class="row justify-between margin-bottom">
+                        <div class="column">
+                            <h2>Acessar</h2>
+                            <div class="decoration"> </div>
+                        </div>
+                        <a href="http://localhost:8090/NeedForLanchinho/cadastro.jsp" class="link">Não possui uma conta?</a>
+                    </div>
+                    
+                    <form action="LoginServlet" method="GET" class="form">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" class="margin-bottom input">
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" class="margin-bottom input">
+                        <input type="submit" value="Entrar" class="submit-btn">
+                    </form>
+                </div>
             </div>
         </div>
     </body>

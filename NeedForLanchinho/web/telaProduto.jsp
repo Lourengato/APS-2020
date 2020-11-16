@@ -4,41 +4,58 @@
     Author     : loure
 --%>
 
+<%@page import="entidade.TbCategoriaIngrediente"%>
+<%@page import="dao.CategoriaIngredienteDao"%>
+<%@page import="entidade.TbIngrediente"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.IngredienteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="style.css">
         <title>Produtos</title>
     </head>
     <body>
-        <p> </p>
+        <div class="column margin-bottom">
+            <h2>Pedido</h2>
+            <div class="decoration"> </div>
+        </div>
+        <form action="ProdutoServlet">
+        <%
+            IngredienteDao ingrediente = new IngredienteDao();
+            List<TbIngrediente> ingredientes = ingrediente.listarIngredientes();
+            CategoriaIngredienteDao categoria = new CategoriaIngredienteDao();
+            List<TbCategoriaIngrediente> categorias = categoria.listarCategoria();
+            
+            for(TbCategoriaIngrediente c : categorias){
+        %>
+            <div style="border: 1px solid black">
+                <p><%out.print(c.getCategoriaIngrediente());%></p>
+        <%  for( TbIngrediente i : ingredientes){
+                if(c.getCodCategoriaIngrediente() == 
+                        i.getCodCategoriaIngrediente().getCodCategoriaIngrediente()){
+        %>
+                <div>
+                    <input type="radio" name="<%out.print(c.getCategoriaIngrediente());%>"
+                               value="<%out.print(i.getCodIngrediente());%>">
+                    <label><% out.print(i.getNomeIngrediente()); %></label>
+                    <label><% out.print(i.getPrecoIngrediente()); %></label>
+                </div>
+        <%}}%>
+            </div>
+        <%}%>
+        <div id="containerPedido"></div>
 
-        <table id="products">
-        <tr>
-            <td>Nome:</td>
-            <td>Preço:</td>
-            <td>Quantidade:</td>
-        </tr>
-        </table>
-        <br>
+        <div class="row justify-between">
+            <p><%out.print(ingredientes.size());%></p>
+            <input class="submit-btn" type="submit" value="Finalizar compra">
+        </div>
+        <form>
+        
     </body>
 </html>
+
 <script>
-    var produtos = [{nome: 'banana', price: '3,99', quantidade: 0}, {nome: 'banana', price: '3,99', quantidade: 0}, {nome: 'banana', price: '3,99', quantidade: 0}]
-
-    refresh()
-
-    function refresh() {
-        for (var i = 0; i < produtos.length; i++) {
-            var table = document.getElementById("products");
-            var row = table.insertRow(i + 1);
-            var name = row.insertCell(0);
-            var price = row.insertCell(1);
-            var quantidade = row.insertCell(2);
-            name.innerHTML = produtos[i].nome;
-            price.innerHTML = produtos[i].price;
-            quantidade.innerHTML = '<button type="button" id="minus" onclick="removeItem(produtos[i].quantidade)">-</button>' + 0 + '<button id="plus" type="button" onclick="addItem(produtos[i].quantidade)">+</button>';
-        }
-    }
 </script>
