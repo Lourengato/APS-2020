@@ -10,6 +10,7 @@
 <%@page import="java.util.List"%>
 <%@page import="dao.IngredienteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +32,7 @@
             
             for(TbCategoriaIngrediente c : categorias){
         %>
-            <div style="border: 1px solid black">
+            <div>
                 <p><%out.print(c.getCategoriaIngrediente());%></p>
         <%  for( TbIngrediente i : ingredientes){
                 if(c.getCodCategoriaIngrediente() == 
@@ -39,14 +40,13 @@
         %>
                 <div>
                     <input type="radio" name="<%out.print(c.getCategoriaIngrediente());%>"
-                               value="<%out.print(i.getCodIngrediente());%>">
-                    <label><% out.print(i.getNomeIngrediente()); %></label>
-                    <label><% out.print(i.getPrecoIngrediente()); %></label>
+                               value="<%out.print(i.getCodIngrediente());%>" class="margin-bottom">
+                    <label class="margin-bottom"><% out.print(i.getNomeIngrediente()); %></label>
+                    <label class="margin-bottom"><% out.print(i.getPrecoIngrediente()); %></label>
                 </div>
         <%}}%>
             </div>
         <%}%>
-        <div id="containerPedido"></div>
 
         <div class="row justify-between">
             <p><%out.print(ingredientes.size());%></p>
