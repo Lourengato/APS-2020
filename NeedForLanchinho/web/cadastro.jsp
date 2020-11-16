@@ -28,7 +28,7 @@
                         <a href="http://localhost:8090/NeedForLanchinho/login.jsp" class="link">Já possui uma conta?</a>
                     </div>
                     
-                    <form action="/action_page.php" class="form">
+                    <form action="CadastroServlet" class="form">
                         <div class="row margin-bottom">
                             <div class="column full-width margin-right-sm">
                                 <label for="userName">Nome:</label>
@@ -53,6 +53,28 @@
                                 <input type="password" id="repassword" name="repassword" class="input">
                             </div>
                         </div>
+                        
+                        
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" name="cidade" class="margin-bottom input">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" name="bairro" class="margin-bottom input">
+                        <label for="rua">Rua:</label>
+                        <input type="text" name="rua" class="margin-bottom input">
+                        
+                        <div class="row margin-bottom">
+                            <div class="column full-width margin-right-sm">
+                                <label for="numero">Número:</label>
+                                <input type="text" name="numero" class="margin-bottom input">
+                            </div>
+                            <div class="column full-width margin-left-sm">
+                                <label for="cep">Cep:</label>
+                                <input type="text" name="cep" class="margin-bottom input">
+                            </div>
+                        </div>
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" name="complemento" class="margin-bottom input">
+                        
                         <input type="submit" value="Cadastrar-se" class="submit-btn">
                     </form>
                 </div>
