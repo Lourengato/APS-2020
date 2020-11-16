@@ -3,23 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/ProdutoDao.java</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/EnderecoDao.java</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/entidade/TbCompra.java</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/entidade/TbIngrediente.java</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/view/CadastrarProduto.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/telaProduto.jsp</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/conf/persistence.xml</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/ClienteDao.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/cadastro.jsp</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/IngredienteDao.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/view/CadastroServlet.java</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/entidade/TbCliente.java</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/CompraDao.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/telaRelatorio.jsp</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/undraw_on_the_way_ldaq.svg</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/CategoriaIngredienteDao.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/login.jsp</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/index.jsp</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/dao/UtilDao.java</file>
-            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/login_1.jsp</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/entidade/TbCategoriaIngrediente.java</file>
+            <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/web/cadastrarProduto.jsp</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/view/ProdutoServlet.java</file>
             <file>file:/C:/Users/vitor/Desktop/APS/APS-2020/NeedForLanchinho/src/java/view/LoginServlet.java</file>
         </group>
