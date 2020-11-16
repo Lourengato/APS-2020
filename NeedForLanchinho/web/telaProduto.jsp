@@ -49,7 +49,6 @@
         <%}%>
 
         <div class="row justify-between">
-            <p><%out.print(ingredientes.size());%></p>
             <input class="submit-btn" type="submit" value="Finalizar compra">
         </div>
         <form>

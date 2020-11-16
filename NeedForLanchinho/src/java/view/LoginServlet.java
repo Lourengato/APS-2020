@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,12 @@ public class LoginServlet extends HttpServlet {
        String psw = request.getParameter("password");
        
        if(cdao.validarSenha(email, psw)){
+           Cookie cookie = new Cookie("IdCliente", 
+                   Integer.toString(
+                           cdao.buscaClienteEmail(email).getCodCliente()
+                   ));
+           response.addCookie(cookie);
+           
            response.sendRedirect("telaProduto.jsp");
        }else{
            response.sendRedirect("login_1.jsp");
