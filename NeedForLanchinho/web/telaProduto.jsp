@@ -4,6 +4,11 @@
     Author     : loure
 --%>
 
+<%@page import="entidade.TbCategoriaIngrediente"%>
+<%@page import="dao.CategoriaIngredienteDao"%>
+<%@page import="entidade.TbIngrediente"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.IngredienteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,69 +22,38 @@
             <h2>Pedido</h2>
             <div class="decoration"> </div>
         </div>
-
-        <div class="full-width row">
-            <button type="button" id="addProduct" onclick="addLanche()" class="submit-btn margin-bottom">Adicionar lanche</button>
-        </div>
-
+        <form action="ProdutoServlet">
+        <%
+            IngredienteDao ingrediente = new IngredienteDao();
+            List<TbIngrediente> ingredientes = ingrediente.listarIngredientes();
+            CategoriaIngredienteDao categoria = new CategoriaIngredienteDao();
+            List<TbCategoriaIngrediente> categorias = categoria.listarCategoria();
+            
+            for(TbCategoriaIngrediente c : categorias){
+        %>
+            <div style="border: 1px solid black">
+                <p><%out.print(c.getCategoriaIngrediente());%></p>
+        <%  for( TbIngrediente i : ingredientes){
+                if(c.getCodCategoriaIngrediente() == 
+                        i.getCodCategoriaIngrediente().getCodCategoriaIngrediente()){
+        %>
+                <div>
+                    <input type="radio" name="<%out.print(c.getCategoriaIngrediente());%>"
+                               value="<%out.print(i.getCodIngrediente());%>">
+                    <label><% out.print(i.getNomeIngrediente()); %></label>
+                    <label><% out.print(i.getPrecoIngrediente()); %></label>
+                </div>
+        <%}}%>
+            </div>
+        <%}%>
         <div id="containerPedido"></div>
 
         <div class="row justify-between">
-            <p>Total: 25,99</p>
-            <button class="submit-btn">Finalizar compra</button>
+            <p><%out.print(ingredientes.size());%></p>
+            <input class="submit-btn" type="submit" value="Finalizar compra">
         </div>
+        <form>
+        
     </body>
 </html>
 
-<script>
-    var produtos = [{nome: 'banana', price: '3,99', quantidade: 0}, {nome: 'banana', price: '3,99', quantidade: 0}, {nome: 'banana', price: '3,99', quantidade: 0}];
-
-    var id = 0;
-
-    function addLanche(item){
-        var container = document.createElement("div");
-        var productsTable = document.createElement("table");
-        var btnDelete = document.createElement("button");
-        btnDelete.innerHTML = "Excluir produto";
-        productsTable.id = 'table' + id;
-        container.id = 'container' + id;
-        productsTable.classList.add('full-width');
-        productsTable.classList.add('margin-bottom');
-        container.classList.add('margin-bottom');
-        document.getElementById('containerPedido').appendChild(container);
-        document.getElementById('container' + id).appendChild(productsTable);
-        document.getElementById('container' + id).appendChild(btnDelete);
-        btnDelete.classList.add('submit-btn');
-        btnDelete.onclick = function(){container.remove();};
-        var table = document.getElementById('table' + id);
-        var row = table.insertRow(0);
-        var name = row.insertCell(0);
-        var price = row.insertCell(1);
-        var quantidade = row.insertCell(2);
-        row.classList.add('title');
-        name.innerHTML = 'Ingrediente:';
-        price.innerHTML ='Preço:';
-        quantidade.innerHTML = 'Quantidade:';
-
-        for (var i = 0; i < produtos.length; i++) {
-            var table = document.getElementById('table' + id);
-            var row = table.insertRow(i + 1);
-            var name = row.insertCell(0);
-            var price = row.insertCell(1);
-            var quantidade = row.insertCell(2);
-            name.innerHTML = produtos[i].nome;
-            price.innerHTML = produtos[i].price;
-            quantidade.innerHTML = '<button type="button" id="minus" onclick="removeItem()" class="submit-btn margin-right-sm">-</button>' + 0 + 
-            '<button id="plus" type="button" onclick="addItem()" class="submit-btn margin-left-sm">+</button>';
-        }                   
-        id ++;
-    }
-
-    function addItem(item){
-
-    }
-
-    function removeItem(item){
-        
-    }
-</script>

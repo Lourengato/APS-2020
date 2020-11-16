@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <a href="cadastro.jsp">Cadastroa</a><br>
+        <a href="login.jsp">Login</a><br>
+        <a href="telaProduto.jsp">Produto</a><br>
+        <a href="telaRelatorio.jsp">Relatorio</a><br>
+        <a href="cadastrarProduto.jsp">cadastro Produto</a>
     </body>
 </html>

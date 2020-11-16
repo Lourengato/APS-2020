@@ -46,11 +46,11 @@
                         <div class="row margin-bottom">
                             <div class="column full-width margin-right-sm">
                                 <label for="password">Senha:</label>
-                                <input type="text" id="password" name="password" class="input">
+                                <input type="password" id="password" name="password" class="input">
                             </div>
                             <div class="column full-width margin-left-sm">
                                 <label for="repassword">Repita a senha:</label>
-                                <input type="text" id="repassword" name="repassword" class="input">
+                                <input type="password" id="repassword" name="repassword" class="input">
                             </div>
                         </div>
                         <input type="submit" value="Cadastrar-se" class="submit-btn">

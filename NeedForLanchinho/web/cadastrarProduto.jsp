@@ -4,6 +4,13 @@
     Author     : loure
 --%>
 
+
+<%@page import="dao.CategoriaIngredienteDao"%>
+<%@page import="entidade.TbCategoriaIngrediente"%>
+<%@page import="entidade.TbIngrediente"%>
+<%@page import="dao.IngredienteDao"%>
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,15 +32,24 @@
                         <div class="decoration"> </div>
                     </div>
                     
-                    <form action="/action_page.php" class="form">
+                    <form action="CadastrarProduto" method="GET" class="form">
                         <label for="email">Nome:</label>
                         <input type="text" id="name" name="name" class="margin-bottom input">
-                        <label for="password">Quantidade:</label>
-                        <input type="text" id="quantidade" name="quantidade" class="margin-bottom input">
                         <label for="password">Preço:</label>
                         <input type="text" id="price" name="price" class="margin-bottom input">
                         <label for="password">Categoria:</label>
-                        <input type="text" id="category" name="category" class="margin-bottom input">
+                        <select name="category">
+                        <%
+                        CategoriaIngredienteDao categoria = new CategoriaIngredienteDao();
+                        List<TbCategoriaIngrediente> categorias = categoria.listarCategoria();
+                    
+                        for(TbCategoriaIngrediente c : categorias){
+                        %>
+                        <option value="<% out.print(c.getCodCategoriaIngrediente()); %>">
+                            <% out.print(c.getCategoriaIngrediente()); %>
+                        </option>
+                        <%}%>
+                        </select>
                         <input type="submit" value="Cadastrar" class="submit-btn">
                     </form>
                 </div>
