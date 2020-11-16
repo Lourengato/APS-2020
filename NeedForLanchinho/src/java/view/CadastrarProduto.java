@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
+import dao.CategoriaIngredienteDao;
+import dao.IngredienteDao;
+import entidade.TbCategoriaIngrediente;
+import entidade.TbIngrediente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,12 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author vitor
- */
-@WebServlet(name = "ProdutoServlet", urlPatterns = {"/ProdutoServlet"})
-public class ProdutoServlet extends HttpServlet {
+@WebServlet(name = "CadastrarProduto", urlPatterns = {"/CadastrarProduto"})
+public class CadastrarProduto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +28,20 @@ public class ProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        TbIngrediente ingrediente = new TbIngrediente();
+        CategoriaIngredienteDao catIngredienteDao = new CategoriaIngredienteDao();
         
+        ingrediente.setNomeIngrediente(request.getParameter("name"));
+        ingrediente.setPrecoIngrediente(Double.valueOf(request.getParameter("price")));
+        ingrediente.setCodCategoriaIngrediente(
+                catIngredienteDao.buscaCategoriaId(Integer.parseInt
+                                    (request.getParameter("category"))));
         
+        IngredienteDao ingredienteDao = new IngredienteDao();
         
+        ingredienteDao.salvar(ingrediente);
+        
+        response.sendRedirect("cadastrarProduto.jsp"); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
