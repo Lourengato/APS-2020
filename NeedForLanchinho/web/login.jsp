@@ -27,13 +27,13 @@
                         </div>
                         <a href="http://localhost:8090/NeedForLanchinho/cadastro.jsp" class="link">Não possui uma conta?</a>
                     </div>
-                    
+                   
                     <form action="LoginServlet" method="GET" class="form">
                         <label for="email">Email:</label>
                         <input type="text" id="email" name="email" class="margin-bottom input">
                         <label for="password">Senha:</label>
                         <input type="password" id="password" name="password" class="margin-bottom input">
-                        <input type="submit" value="Entrar" class="submit-btn">
+           <input type="submit" value="Entrar" class="submit-btn">
                     </form>
                 </div>
             </div>

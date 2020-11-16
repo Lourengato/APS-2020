@@ -4,11 +4,13 @@
     Author     : loure
 --%>
 
+
 <%@page import="dao.CategoriaIngredienteDao"%>
 <%@page import="entidade.TbCategoriaIngrediente"%>
 <%@page import="entidade.TbIngrediente"%>
 <%@page import="dao.IngredienteDao"%>
 <%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,8 +49,7 @@
                             <% out.print(c.getCategoriaIngrediente()); %>
                         </option>
                         <%}%>
-                        </select><br>
-                        
+                        </select>
                         <input type="submit" value="Cadastrar" class="submit-btn">
                     </form>
                 </div>
